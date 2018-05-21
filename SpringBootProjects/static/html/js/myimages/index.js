@@ -36,10 +36,8 @@ $(function() {
           $('#mycarousel .carousel-inner').append(item);
         });
 
-        $('#mycarousel').carousel({
-          interval: 2000
-        });
-        
+        $('#mycarousel').carousel();
+
       });
     });
 
