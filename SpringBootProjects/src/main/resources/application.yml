@@ -11,6 +11,9 @@ spring:
       force: true
       charset: UTF-8
       enabled: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.133.129:3306/projects?useSSL=false&characterEncoding=UTF-8&serverTimezone=GMT%2B8
