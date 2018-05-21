@@ -1,0 +1,7 @@
+/SpringBootProjects/build
+/SpringBootProjects/.gradle
+/SpringBootProjects/bin
+/SpringBootProjects/gradle
+/SpringBootProjects/static/nginx/logs
+/SpringBootProjects/static/nginx/temp
+/SpringBootProjects/static/html/uploadfile
