@@ -21,4 +21,14 @@
 		by imageId desc limit 5
 	</select>
 
+	<select id="queryPage" resultType="TbMyImages">
+		select * from TbMyImages order
+		by imageId desc
+	</select>
+
+	<select id="queryPage_COUNT" resultType="int">
+		select count(*) from
+		TbMyImages
+	</select>
+
 </mapper>

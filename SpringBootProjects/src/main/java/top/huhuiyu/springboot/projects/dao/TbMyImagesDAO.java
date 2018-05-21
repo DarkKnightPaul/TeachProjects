@@ -11,6 +11,8 @@ public interface TbMyImagesDAO {
   public int add(TbMyImages images) throws Exception;
 
   public int delete(TbMyImages images) throws Exception;
-  
+
   public List<TbMyImages> queryLast() throws Exception;
+
+  public List<TbMyImages> queryPage() throws Exception;
 }

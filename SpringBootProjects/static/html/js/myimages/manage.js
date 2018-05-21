@@ -14,11 +14,37 @@ $(function() {
     });
   });
 
+  //默认分页信息
+  var page = {
+    'pageNumber': 1,
+    'pageSize': 5
+  };
+
+  $('#btnNext').click(function() {
+    page.pageNumber = page.pageNumber + 1;
+    if (page.pageNumber > page.pageCount) {
+      page.pageNumber = page.pageCount;
+    }
+    query();
+  });
+
+  $('#btnPre').click(function() {
+    page.pageNumber = page.pageNumber - 1;
+    if (page.pageNumber <= 0) {
+      page.pageNumber = 1;
+    }
+    query();
+  });
+
   function query() {
     mydialog.showWait('查询数据中...', '请稍候');
-    dataService.send('/myimages/queryLast', {}, function(err, data) {
+    dataService.send('/myimages/queryPage', {
+      'page.pageNumber': page.pageNumber,
+      'page.pageSize': page.pageSize
+    }, function(err, data) {
       console.log(err, data);
       mydialog.hideWait();
+      page = data.datas.page;
       mydialog.showAlert(data.message, '信息', function() {
         $('#tbData').html('');
         $.each(data.datas.list, function(i, v) {
@@ -53,11 +79,38 @@ $(function() {
           td.append(a);
           tr.append(td);
 
+          td = $(document.createElement('td'));
+          var span = $(document.createElement('span'));
+          span.append('删除');
+          span.attr('class', 'btn btn-danger');
+          span.click(function() {
+            mydialog.showConfirm('是否删除：' + v.description + '?', '确认删除', function() {
+              deleteImages(v.imageId);
+            });
+          });
+          td.append(span);
+          tr.append(td);
+
           $('#tbData').append(tr);
         });
+        $('#spPage').html(page.pageCount + '/' + page.pageNumber);
       });
     });
 
+  }
+
+  function deleteImages(imageId) {
+    console.log(imageId);
+    mydialog.showWait('删除数据中...', '请稍候');
+    dataService.send('/myimages/delete', {
+      'images.imageId': imageId
+    }, function(err, data) {
+      mydialog.hideWait();
+      mydialog.showAlert(data.message, '信息', function() {
+        query();
+      });
+
+    });
   }
 
   query();

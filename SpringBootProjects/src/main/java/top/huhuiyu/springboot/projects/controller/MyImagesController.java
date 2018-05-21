@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
 import top.huhuiyu.springboot.projects.Application;
 import top.huhuiyu.springboot.projects.dao.TbMyImagesDAO;
 import top.huhuiyu.springboot.projects.entity.TbMyImages;
@@ -24,7 +27,7 @@ import top.huhuiyu.springboot.projects.util.JsonMessage;
 public class MyImagesController {
   public static final String HTML_DIR = "/static/html";
   public static final String UPLOAD_DIR = "/uploadfile/";
-  
+
   @Autowired
   private TbMyImagesDAO tbMyImagesDAO;
 
@@ -88,6 +91,28 @@ public class MyImagesController {
     JsonMessage message = JsonMessage.getSuccess("查询完成");
     message.putData("list", tbMyImagesDAO.queryLast());
     return message;
+  }
+
+  @RequestMapping("/queryPage")
+  @ResponseBody
+  public JsonMessage queryPage(MyImagesModel model) throws Exception {
+    PageHelper.startPage(model.getPage().getPageNumber(), model.getPage().getPageSize());
+    JsonMessage message = JsonMessage.getSuccess("查询完成");
+    Page<TbMyImages> list = (Page<TbMyImages>) tbMyImagesDAO.queryPage();
+    message.putData("list", list);
+    model.getPage().setPageInfo(list);
+    message.putData("page", model.getPage());
+    return message;
+  }
+
+  @RequestMapping("/delete")
+  @ResponseBody
+  public JsonMessage delete(MyImagesModel model) throws Exception {
+    if (model.getImages().getImageId() <= 0) {
+      return JsonMessage.getFail("请选择要删除的图片");
+    }
+    tbMyImagesDAO.delete(model.getImages());
+    return JsonMessage.getSuccess("删除成功");
   }
 
 }

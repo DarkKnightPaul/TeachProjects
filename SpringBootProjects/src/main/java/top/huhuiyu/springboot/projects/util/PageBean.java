@@ -17,9 +17,9 @@ public class PageBean implements Serializable {
 
   public PageBean setPageInfo(Page<?> page) {
     total = (int) page.getTotal();
+    pageCount = page.getPages();
     pageNumber = page.getPageNum();
     pageSize = page.getPageSize();
-    pageCount = page.getPages();
     return this;
   }
 
