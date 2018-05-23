@@ -1,0 +1,70 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #000000;
+  color: #0000ff;
+}
+
+.myflex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.div-01 {
+  width: 200px;
+  margin: 30px;
+  box-shadow: 0px 0px 5px #f00000;
+  border-radius: 3px;
+  padding: 10px;
+  transition: all .5s;
+}
+
+.div-01:hover {
+  box-shadow: 0px 0px 30px #ff0000;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.div-01 .body {
+  padding: 5px;
+  color: #000fff;
+  text-indent: 2em;
+}
+
+.div-01:hover .body {
+  /* animation: rotate360 .5s; */
+  color: #00afff;
+}
+
+.div-01 .divider {
+  border-top: 1px solid #f00000;
+}
+
+.div-01 .title {
+  font-size: larger;
+  text-align: center;
+  text-shadow: 0px 0px 10px #ff0000;
+}
+
+.div-01 .footer {
+  font-size: smaller;
+  text-align: right;
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+
+}

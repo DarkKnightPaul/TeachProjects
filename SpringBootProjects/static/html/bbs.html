@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SpringBoot项目集-留言板</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bbs.css">
+  </head>
+  <body>
+    <!-- 留言对话框 -->
+    <div>
+      <div id="addDialog">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="用户名" id="txtUsername" maxlength="8">
+        </div>
+        <div class="form-group">
+          <textarea id="txtInfo" class="form-control" placeholder="留言信息" maxlength="140"></textarea>
+        </div>
+        <div class="text-right">
+          <span class="btn btn-danger" id="btnSave">发布</span>
+          <span class="btn btn-danger" id="btnClose">关闭</span>
+        </div>
+      </div>
+    </div>
+    <!-- 留言对话框结束 -->
+    
+    <div class="div-top">
+      <span class="btn btn-danger btn-sm" id="btnRefresh">刷新</span>
+      <span class="btn btn-danger btn-sm" id="btnShowAdd">我要留言</span>
+    </div>
+    
+    <div class="myflex" id="divbbs">
+      
+    </div>
+    
+    
+    <!-- 通用对话框开始 -->
+    <div>
+      <!-- 等待对话框 -->
+      <div class="modal fade" data-keyboard="false" data-backdrop="false" role="dialog" tabindex="-1" id="wait-dialog" style="z-index: 1999;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="wait-dialog-title"></h4>
+            </div>
+            <div class="modal-body">
+              <div>
+                <div id="wait-dialog-info" class="h4 text-center"></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <!-- 等待对话框结束 -->
+      <!-- 确定对话框 -->
+      <div class="modal fade" role="dialog" tabindex="-1" id="alert-dialog" style="z-index: 1998;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="alert-dialog-title"></h4>
+            </div>
+            <div class="modal-body">
+              <div>
+                <div id="alert-dialog-info" class="h4 text-center"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <span class="btn btn-primary" data-dismiss="modal">确定</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 确定对话框结束 -->
+      
+      <!-- 确认对话框 -->
+      <div class="modal fade" role="dialog" data-keyboard="false" data-backdrop="false" tabindex="-1" id="confirm-dialog" style="z-index: 1997;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="confirm-dialog-title"></h4>
+            </div>
+            <div class="modal-body">
+              <div>
+                <div id="confirm-dialog-info" class="h4 text-center"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <span class="btn btn-primary" id="confirm-dialog-yes">是</span>
+              <span class="btn btn-primary" id="confirm-dialog-no">否</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 确认对话框结束 -->
+      
+      <!-- 自定义对话框 -->
+      <div class="modal fade" data-keyboard="false" data-backdrop="false" role="dialog" tabindex="-1" id="custom-dialog" style="z-index: 1990;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="custom-dialog-title"></h4>
+            </div>
+            <div class="modal-body">
+              <div id="custom-dialog-body"></div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <!-- 自定义对话框结束 -->
+    </div>
+    <!-- 通用对话框结束 -->
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/bs-dialog.js"></script>
+    <script type="text/javascript" src="lib/data-service.js"></script>
+    <script type="text/javascript" src="js/bbs.js"></script>
+  </body>
+</html>

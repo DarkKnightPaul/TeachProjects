@@ -8,5 +8,6 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="top/huhuiyu/springboot/projects/mapper/TbMyImagesMapper.xml" />
+		<mapper resource="top/huhuiyu/springboot/projects/mapper/TbBbsMapper.xml" />
 	</mappers>
 </configuration>
